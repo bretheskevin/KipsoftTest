@@ -1,0 +1,9 @@
+<div class="row h-100">
+  <div class="my-auto d-flex justify-content-center">
+    <button [hidden]="currentPage === 1" type="button" class="btn btn-info" (click)="previousPage()">Previous</button>
+  </div>
+  <p class="my-auto text-center">Page {{ currentPage }}/{{ totalPages }}</p>
+  <div class="my-auto d-flex justify-content-center">
+    <button [hidden]="currentPage === totalPages" class="btn btn-info" (click)="nextPage()">Next</button>
+  </div>
+</div>
