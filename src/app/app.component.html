@@ -3,8 +3,8 @@
   <app-searchbar (companyChange)="setCompany($event)"
                  (activateLoading)="loading = true"
                  (deactivateLoading)="loading = false"
-                 (noCompanyFound)="showErrorMessage = true"
-                 (companyFound)="showErrorMessage = false"
+                 (noCompanyFound)="errorEvent()"
+                 (companyFound)="showErrorMessage = false;"
                  [currentPage]="currentPage"></app-searchbar>
   <div class='divider dropdown-divider mt-4 mx-auto'></div>
   <div *ngIf="showErrorMessage">

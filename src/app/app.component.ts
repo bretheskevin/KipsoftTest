@@ -23,4 +23,9 @@ export class AppComponent {
   setPage(page: number) {
     this.currentPage = page;
   }
+
+  errorEvent() {
+    this.showErrorMessage = true
+    this.company = undefined;
+  }
 }

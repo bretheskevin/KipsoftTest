@@ -1,27 +1,67 @@
-# KipsoftTest
+# Kipsoft Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+<!-- ABOUT THE PROJECT -->
+## <span id="about-the-project">About the project</span>
+### <span id="built-with">Built with</span>
 
-## Development server
+* [Angular](https://angular.io/)
+* [Bootstrap](https://getbootstrap.com/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### <span id="installation">Installation</span>
+```shell
+npm install
+ng serve # default port is 4200
+```
 
-## Code scaffolding
+## <span id="about-the-project">Models</span>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`Company` - model of the API response (https://entreprise.data.gouv.fr/api/sirene/v1/full_text/XXXX?per_page=5&page=1)
 
-## Build
+```ts
+import Etablissement from "./etablissement";
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+export default interface Company {
+  total_results: number
+  total_pages: number
+  per_page: number
+  page: string
+  etablissement: Etablissement[]
+  spellcheck: any
+  suggestions: string[]
+}
+```
 
-## Running unit tests
+`Etablissement` 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+export default interface Etablissement {
+  id: number
+  siren: string
+  siret: string
+  nic: string
+  l1_normalisee: string
+  ...
+  geo_type: string
+  geo_adresse: string
+  geo_id: string
+  geo_ligne: string
+  geo_l4: string
+  geo_l5: string
+}
+```
 
-## Running end-to-end tests
+`SiretResponse` - model of the API response (https://entreprise.data.gouv.fr/api/sirene/v1/siret/XXXX?per_page=5&page=1)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```ts
+import Etablissement from "./etablissement";
 
-## Further help
+export interface SiretResponse {
+  etablissement: Etablissement
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+
+
+## Feedback
+
+If you have any feedbacks, contact me at [contact@bretheskevin.fr](mailto:contact@bretheskevin.fr). This is my first web app using angular. 
