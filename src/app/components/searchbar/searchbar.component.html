@@ -1,12 +1,14 @@
 <div class='container d-flex justify-content-center mt-5'>
-  <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg' class='mr-2'>
-    <g opacity='0.6'>
-      <circle cx='12.5' cy='12.5' r='8.75' stroke='#0F0F2B' stroke-width='1.875' stroke-linecap='round'
+  <div class="form-group">
+    <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg' class='mr-2'>
+      <g opacity='0.6'>
+        <circle cx='12.5' cy='12.5' r='8.75' stroke='#0F0F2B' stroke-width='1.875' stroke-linecap='round'
+                stroke-linejoin='round'/>
+        <path d='M26.25 26.25L18.75 18.75' stroke='#0F0F2B' stroke-width='1.875' stroke-linecap='round'
               stroke-linejoin='round'/>
-      <path d='M26.25 26.25L18.75 18.75' stroke='#0F0F2B' stroke-width='1.875' stroke-linecap='round'
-            stroke-linejoin='round'/>
-    </g>
-  </svg>
-  <input id="search-input" type='text' class='border-0 mx-2' placeholder='Nom / Siret' #newContent >
-  <button type="button" class="btn btn-outline-info" (click)="searchCompany(newContent.value)">Search</button>
+      </g>
+    </svg>
+    <input id="search-input" (keydown.enter)="searchCompany(newContent.value)" type='text' class='border-0 mx-2' placeholder='Nom / Siret' #newContent >
+    <button type="button" class="btn btn-outline-info" (click)="searchCompany(newContent.value)">Search</button>
+  </div>
 </div>

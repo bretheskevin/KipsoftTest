@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -6,19 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
-  currentPage: number = 2;
-  totalPages: number = 12;
+  @Input() currentPage?: number;
+  @Input() totalPages?: number;
+  @Output() pageChange: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.checkRequiredFields()
   }
 
   previousPage(): void {
-    this.currentPage--;
+    this.currentPage!--;
+    this.pageChange.emit(this.currentPage);
   }
 
   nextPage(): void {
-    this.currentPage++;
+    this.currentPage!++;
+    this.pageChange.emit(this.currentPage);
+  }
+
+  checkRequiredFields(): void {
+    if (this.currentPage === null) {
+      throw new Error("Attribute 'currentPage' is required");
+    }
+    if (this.totalPages === null) {
+      throw new Error("Attribute 'totalPages' is required");
+    }
   }
 }

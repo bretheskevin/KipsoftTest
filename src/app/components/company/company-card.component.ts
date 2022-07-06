@@ -15,11 +15,11 @@ export class CompanyCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkRequiredFields(this.Etablissement);
+    this.checkRequiredFields();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.checkRequiredFields(this.Etablissement);
+    this.checkRequiredFields();
   }
 
   switchMoreDetail() {
@@ -27,8 +27,8 @@ export class CompanyCardComponent implements OnInit {
     this.moreDetailText = this.moreDetailHidden ? "Show more" : "Show less";
   }
 
-  checkRequiredFields(etablissement?: Etablissement) {
-    if (etablissement === null) {
+  checkRequiredFields(): void {
+    if (this.Etablissement === null) {
       throw new Error("Attribute 'Etablissement' is required");
     }
   }

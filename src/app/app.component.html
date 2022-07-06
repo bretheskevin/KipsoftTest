@@ -1,14 +1,36 @@
 <div class="d-flex justify-content-center flex-column">
   <h1 class="text-center mt-2 rest">KipsoftTest</h1>
-  <app-searchbar></app-searchbar>
+  <app-searchbar (companyChange)="setCompany($event)"
+                 (activateLoading)="loading = true"
+                 (deactivateLoading)="loading = false"
+                 (noCompanyFound)="showErrorMessage = true"
+                 (companyFound)="showErrorMessage = false"
+                 [currentPage]="currentPage"></app-searchbar>
   <div class='divider dropdown-divider mt-4 mx-auto'></div>
+  <div *ngIf="showErrorMessage">
+    <div class="alert alert-danger container w-25 mt-5" role="alert">
+      No companies were found
+    </div>
+  </div>
   <div>
     <div class="mt-2 row p-5">
-      <div class="d-flex" >
-        <app-loading class="mx-auto" [hidden]="!loading"></app-loading>
+      <div class="d-flex">
+        <app-loading class="mx-auto" *ngIf="loading"></app-loading>
       </div>
-<!--      <app-company-card class="col-sm-6 col-md-4 col-lg-3"></app-company-card>-->
-      <app-pagination class="col-sm-6 col-md-4 col-lg-3"></app-pagination>
+      <span *ngIf="company !== undefined" class="row">
+        <app-company-card
+          class="col-sm-6 col-md-4 col-lg-3"
+          *ngFor="let etablissement of company.etablissement"
+          [Etablissement]="etablissement">
+        </app-company-card>
+        <app-pagination
+          *ngIf="company.total_pages > 1" class="col-sm-6 col-md-4 col-lg-3"
+          [currentPage]="+company.page"
+          [totalPages]="+company.total_pages"
+          (pageChange)="setPage($event)">
+        </app-pagination>
+      </span>
+
     </div>
   </div>
 </div>
