@@ -1,0 +1,36 @@
+<div class="card mb-3">
+  <div class="card-header">
+    {{ Etablissement!.l1_normalisee}}
+  </div>
+  <div class="card-body">
+    <div class="d-flex flex-wrap">
+      <p>- <span class="fw-bolder">SIREN</span> : {{ Etablissement!.siren }}</p>
+    </div>
+    <div class="d-flex flex-wrap">
+      <p>- <span class="fw-bolder">SIRET</span> : {{ Etablissement!.siret }}</p>
+    </div>
+    <div class="d-flex flex-wrap">
+      <p>- <span class="fw-bolder">NIC</span> : {{ Etablissement!.nic }}</p>
+    </div>
+    <div [hidden]="moreDetailHidden" id="more-detail">
+      <div class="d-flex flex-wrap">
+        <p>- <span class="fw-bolder">TOWN</span> : {{ Etablissement!.libelle_commune }}</p>
+      </div>
+      <div class="d-flex flex-wrap">
+        <p>- <span class="fw-bolder">DISTRICT</span> : {{ Etablissement!.libelle_region }}</p>
+      </div>
+      <div class="d-flex flex-wrap">
+        <p>- <span class="fw-bolder">STREET</span> : {{ Etablissement!.libelle_voie }}</p>
+      </div>
+      <div class="d-flex flex-wrap">
+        <p>- <span class="fw-bolder">ZIPCODE</span> : {{ Etablissement!.code_postal }}</p>
+      </div>
+      <div class="d-flex flex-wrap">
+        <p>- <span class="fw-bolder">FULL ADRESS</span> : {{ Etablissement!.geo_adresse }}</p>
+      </div>
+    </div>
+    <button class="btn btn-info" type="button" (click)="switchMoreDetail()">
+      {{ moreDetailText }}
+    </button>
+  </div>
+</div>
