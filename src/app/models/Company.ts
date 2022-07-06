@@ -1,5 +1,11 @@
+import Etablissement from "./etablissement";
+
 export default interface Company {
-  totalPages: number;
-  page: number;
-  etablissement: Etablissement[];
+  total_results: number
+  total_pages: number
+  per_page: number
+  page: string
+  etablissement: Etablissement[]
+  spellcheck: any
+  suggestions: string[]
 }
