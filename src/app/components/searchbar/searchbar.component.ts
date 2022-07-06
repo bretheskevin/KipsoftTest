@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {CompanyService} from "../../services/company.service";
+import Company from "../../models/company";
 
 @Component({
   selector: 'app-searchbar',
@@ -6,17 +8,19 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
-  public content: string = ""
 
-  constructor() { }
+  constructor(private companyService: CompanyService) {
+  }
 
   ngOnInit(): void {
 
   }
 
   searchCompany(newContent: string): void {
-    this.content = newContent;
-    console.log(this.content);
-    this.content = "";
+    this.companyService.getCompanyDataByName(newContent).subscribe(
+      (data: Company) => {
+        console.log(data);
+      }
+    );
   }
 }
